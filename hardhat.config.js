@@ -98,42 +98,8 @@ module.exports = {
   
     solidity: {
       compilers: [
-
         {
-          version: "0.4.18",
-          settings: {},
-        },
-        {
-          version: "0.4.20",
-        },
-        {
-          version: "0.4.24",
-  
-        },
-        {
-          version: "0.5.16",
-  
-        },
-        {
-          version: "0.8.4",
-          settings: {
-            optimizer: {
-              enabled: true,
-              runs: 1000
-            }
-          }
-        },
-        {
-          version: "0.8.5",
-          settings: {
-            optimizer: {
-              enabled: true,
-              runs: 200
-            }
-          }
-        },
-        {
-          version: "0.8.7",
+          version: "0.8.6",
           settings: {
             optimizer: {
               enabled: true,
