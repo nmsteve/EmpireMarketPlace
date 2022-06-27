@@ -1,0 +1,19 @@
+{
+    "name": "Empire Logo",
+    "description": "This is the Image shown before the NFTs mint proccess is completed.Every mint period has its unique baseURI ",
+    "image": "https://ipfs.io/ipfs/QmRDSJdhzPwe3nnKa1KFULdjhCcuxVsJpjXn6F6PxCiU3G/empirehidden.jpg",
+    "attributes": [{
+        "trait_type": "Generation",
+        "value": 1
+      },
+      {
+        "trait_type": "Design Logic",
+        "value": "simple maze puzzle"
+      },
+     
+      {
+        "trait_type": "Background",
+        "value": "white light glow"
+      }
+    ]
+}
