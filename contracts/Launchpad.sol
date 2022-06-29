@@ -43,7 +43,7 @@ contract LaunchpadCollection is ERC721, Ownable, ERC721Royalty{
     constructor(string memory baseURI_, string memory name, string memory ticker, address owner) ERC721(name, ticker) {
         // Set contract URI
         baseURI = baseURI_;
-        transferOwnership(owner);
+        _transferOwnership(owner);
     }
 
     function setMaxMintAmount(uint256 _maxMintAmount) external onlyOwner{

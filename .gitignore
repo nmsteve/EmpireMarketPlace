@@ -3,5 +3,7 @@ ipfs-upload-client
 coverage
 artifacts
 cache
+metadata
+
 
 
