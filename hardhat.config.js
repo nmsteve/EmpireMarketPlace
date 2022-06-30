@@ -38,7 +38,6 @@ module.exports = {
       }
       
     },
-
     ropsten: {
       url: process.env.ROPSTEN_URL,
       accounts: {
@@ -63,7 +62,6 @@ module.exports = {
         passphrase: "",
       },
     },
-
     roburna : {
       url: process.env.ROBURNA_URL || 'https://preseed-testnet-1.roburna.com/',
       //accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [process.env.PRIVATE_KEY0,process.env.PRIVATE_KEY1,process.env.PRIVATE_KEY2,process.env.PRIVATE_KEY3,process.env.PRIVATE_KEY4,process.env.PRIVATE_KEY5],
@@ -71,7 +69,7 @@ module.exports = {
         mnemonic: process.env.MNEMONIC,
         path: "m/44'/60'/0'/0",
         initialIndex: 0,
-        count: 20,
+        count: 10,
         passphrase: "",
       },
       gas:5603244,
@@ -86,7 +84,27 @@ module.exports = {
       count: 10,
       passphrase: "",
     }
-}
+    },
+    kovan: {
+      url: process.env.KOVAN,
+      accounts:{
+        mnemonic: process.env.MNEMONIC,
+        path: "m/44'/60'/0'/0",
+        initialIndex: 0,
+        count: 10,
+        passphrase: "",
+      }
+    },
+    mumbai:{
+      url: process.env.POLYGON_MUMBAI_ALCHEMY,
+      accounts:{
+        mnemonic: process.env.MNEMONIC,
+        path: "m/44'/60'/0'/0",
+        initialIndex: 0,
+        count: 10,
+        passphrase: "",
+      }
+    }
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
