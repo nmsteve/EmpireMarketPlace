@@ -10,38 +10,37 @@ async function main() {
   
 
   // We get the contract artifacts
-  this.CollectionMinter = await ethers.getContractFactory("contracts/EmpireCollection.sol:CollectionMinter")
+  this.CollectionMinter = await ethers.getContractFactory("CollectionMinter")
   this.VasReward = await ethers.getContractFactory("VasReward")
   this.collection =await ethers.getContractFactory('EmpireCollection')
 
-  //connect to deployed contracts
-   const collectionMinterAddress = process.env.CMG
-   const vasRewardAddress = process.env.VRG
-   const NEONPETCollectionAddress = process.env.NPG
+  //Get address   
+  const collectionMinterAddress = process.env.CM
+  const vasRewardAddress = process.env.VR
 
   //conect to deployed contracts
   this.CollectionMinter = this.CollectionMinter.attach(collectionMinterAddress)
   this.VasReward = this.VasReward.attach(vasRewardAddress)
+  const NEONPETCollectionAddress = await this.CollectionMinter.getCollectionAddress(owner.address, 1)
+  console.log(`NEONPET at ${NEONPETCollectionAddress}`) 
   this.collection = this.collection.attach(NEONPETCollectionAddress)
 
-  //set set Tresuary
-  await this.CollectionMinter.setTresuary(user1.address)
-  console.log(`Tresuary Bal:${await this.VasReward.balanceOf(user1.address)}`)
-
-
+  await this.collection.changeRevealed(true)
+  await this.collection.changeBaseURI("https://ipfs.io/ipfs/QmZ6ZKVVHyNZFLEKxUJnX1GTJsDQp1uiRG5AvxR4whdCtR/ ")
 
   //approve collection Minter
-  this.VasReward.approve(collectionMinterAddress, parseEther('1000'))          
-  await this.CollectionMinter.mintFromExistingCollection(50, vasRewardAddress, parseEther('1'), 1, 500)
-
+  await this.VasReward.approve(collectionMinterAddress, parseEther('100000'))
+  //mint        
+  await this.CollectionMinter.mintFromExistingCollection(1, vasRewardAddress, parseEther('0.001'), 1, 500)
 
   console.log(`Total Supply Is: ${await this.collection.totalSupply()}`)
   console.log(`Fees collected :${await this.VasReward.balanceOf(collectionMinterAddress)}`)
   console.log(`Token 1 URI: ${ await this.collection.tokenURI(1)}`)
-  console.log(`Token 10 URI: ${await this.collection.tokenURI(10)}`)
-  console.log(`Token 35 URI: ${await this.collection.tokenURI(35)}`)
-  console.log(`Token 50 URI: ${ await this.collection.tokenURI(50)}`)
+  console.log(`Token 2 URI: ${await this.collection.tokenURI(2)}`)
+  console.log(`Token 3 URI: ${await this.collection.tokenURI(3)}`)
+  console.log(`Token 5 URI: ${ await this.collection.tokenURI(5)}`)
 
+  
 
   
 
