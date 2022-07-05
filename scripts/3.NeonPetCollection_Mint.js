@@ -21,24 +21,27 @@ async function main() {
   //conect to deployed contracts
   this.CollectionMinter = this.CollectionMinter.attach(collectionMinterAddress)
   this.VasReward = this.VasReward.attach(vasRewardAddress)
-  const NEONPETCollectionAddress = await this.CollectionMinter.getCollectionAddress(owner.address, 1)
+  const NEONPETCollectionAddress = await this.CollectionMinter.getCollectionAddress(owner.address, 2)
   console.log(`NEONPET at ${NEONPETCollectionAddress}`) 
   this.collection = this.collection.attach(NEONPETCollectionAddress)
 
   await this.collection.changeRevealed(true)
-  await this.collection.changeBaseURI("https://ipfs.io/ipfs/QmZ6ZKVVHyNZFLEKxUJnX1GTJsDQp1uiRG5AvxR4whdCtR/ ")
+  await this.collection.changeBaseURI(`${process.env.Json} `)
 
   //approve collection Minter
   await this.VasReward.approve(collectionMinterAddress, parseEther('100000'))
+  await this.VasReward.approve(NEONPETCollectionAddress, parseEther('100000'))
+  
   //mint        
   await this.CollectionMinter.mintFromExistingCollection(1, vasRewardAddress, parseEther('0.001'), 1, 500)
 
-  console.log(`Total Supply Is: ${await this.collection.totalSupply()}`)
-  console.log(`Fees collected :${await this.VasReward.balanceOf(collectionMinterAddress)}`)
-  console.log(`Token 1 URI: ${ await this.collection.tokenURI(1)}`)
-  console.log(`Token 2 URI: ${await this.collection.tokenURI(2)}`)
-  console.log(`Token 3 URI: ${await this.collection.tokenURI(3)}`)
-  console.log(`Token 5 URI: ${ await this.collection.tokenURI(5)}`)
+
+  console.log(`NFTs Total supply: ${ await this.collection.totalSupply()}`)
+  //console.log(`Fees collected :${await this.VasReward.balanceOf(collectionMinterAddress)}`)
+  //console.log(`Token 1 URI: ${ await this.collection.tokenURI(1)}`)
+  //console.log(`Token 2 URI: ${await this.collection.tokenURI(2)}`)
+  // console.log(`Token 3 URI: ${await this.collection.tokenURI(3)}`)
+  // console.log(`Token 5 URI: ${ await this.collection.tokenURI(5)}`)
 
   
 

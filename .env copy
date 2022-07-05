@@ -5,6 +5,7 @@ POLYGON_MUMBAI_ALCHEMY=https://polygon-mumbai.g.alchemy.com/v2/<key>
 
 MNEMONIC=""
 
+Json=ttps://ipfs.io/ipfs/<hash>/
 
 mumbai
 CollectionMinter Deployed at:
